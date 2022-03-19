@@ -1,4 +1,5 @@
 # madaodv
+**(in development)**
 ## Table Of Contents
 ## Description
 The goal of the madaodv protocol is to allow nodes without access to the internet, to access the internet through nodes that do have access to the internet. The protocol creates routes between a set of nodes to connect nodes without internet access to nodes that do have access, so as to allow communication between them. From there, using a higher layer protoocol, nodes that provide internet access can act as gateways that pass information to the internet from nodes without access to the internet and vice versa. 
@@ -10,3 +11,8 @@ Since nodes that are part of the madaodv netowrk are not assumed to have a legit
 
 
 ## How To Install and Run
+
+## Hybrid Wifi Mac
+
+## Future Plans
+
