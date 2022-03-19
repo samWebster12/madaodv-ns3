@@ -13,6 +13,18 @@ Since nodes that are part of the madaodv netowrk are not assumed to have a legit
 ## How To Install and Run
 
 ## Hybrid Wifi Mac
+Development of a Hybrid Wifi Mac that provides support for both infrastrucutre mode and adhoc is being workd on in the hybrid-wifi-mac folder. The goal is to allow nodes to connect to wifi infrasture mode and also connect to madaodv network, providing access to the internet to the madaodv network through this wifi infrastructure. 
+
+## Additional Necessary Technologies for Practical Use
+In order to be of any true use, madaodv requires that two other technologies are implemented:
+
+First, the ability for a wifi device to connect to an access point (infrastructure mode) and simultaneously connect to the madaodv network (ad hoc mode) is important so that access points may provide internet access at no cost to them (rather than using lte). This is what the hybrid-wifi-mac is designed for.
+
+Second, an application level protocol is needed for two reasons. First, the protocol needs to provide NAT-like functionality, multiplexing and demultiplexing  incoming addresses and ports so gateways may send packets to the internet and back on behalf of other nodes. Second, information such as what URL or address to go to need to be sent to access points in some way. An application level protocol would allow nodes to send information that needs to be sent through the internet via
 
 ## Future Plans
+
+
+
+
 
