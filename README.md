@@ -5,4 +5,6 @@ So this is me writing something
 
 ---
 ## a new section
+### a new section
+#### a new section
 test
