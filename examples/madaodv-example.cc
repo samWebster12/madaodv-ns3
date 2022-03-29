@@ -22,16 +22,16 @@
 
 #include <iostream>
 #include <cmath>
-#include "../madaodv-model/madaodv-dpd.h"
-#include "../madaodv-model/madaodv-id-cache.h"
-#include "../madaodv-model/madaodv-neighbor.h"
-#include "../madaodv-model/madaodv-packet.h"
-#include "../madaodv-model/madaodv-routing-protocol.h"
-#include "../madaodv-model/madaodv-rqueue.h"
-#include "../madaodv-model/madaodv-rtable.h"
-#include "../madaodv-model/madaodv-helper.h"
-#include "../madaodv-model/madaodv-routing-protocol.h"
-#include "../hybrid-wifi-mac/hybrid-wifi-mac.h"
+#include "ns3/madaodv-dpd.h"
+#include "ns3/madaodv-id-cache.h"
+#include "ns3/madaodv-neighbor.h"
+#include "ns3/madaodv-packet.h"
+#include "ns3/madaodv-routing-protocol.h"
+#include "ns3/madaodv-rqueue.h"
+#include "ns3/madaodv-rtable.h"
+#include "ns3/madaodv-helper.h"
+#include "ns3/madaodv-routing-protocol.h"
+#include "ns3/hybrid-wifi-mac.h"
 
 
 #include "ns3/core-module.h"

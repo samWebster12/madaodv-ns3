@@ -17,9 +17,9 @@
  *
  * Authors: Pavel Boyko <boyko@iitp.ru>, written after OlsrHelper by Mathieu Lacage <mathieu.lacage@sophia.inria.fr>
  */
-#include "madaodv-helper.h"
+#include "ns3/madaodv-helper.h"
 //#include "ns3/madaodv-routing-protocol.h"
-#include "madaodv-routing-protocol.h"
+#include "ns3/madaodv-routing-protocol.h"
 #include "ns3/node-list.h"
 #include "ns3/names.h"
 #include "ns3/ptr.h"
