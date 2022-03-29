@@ -1,6 +1,5 @@
 set(source_files
     model/madaodv-dpd.cc
-    model/madaodv-helper.cc
     model/madaodv-id-cache.cc
     model/madaodv-neighbor.cc
     model/madaodv-packet.cc
@@ -8,11 +7,11 @@ set(source_files
     model/madaodv-rqueue.cc
     model/madaodv-rtable.cc
     model/hybrid-wifi-mac.cc
+    helper/madaodv-helper.cc
 )
 
 set(header_files
     model/madaodv-dpd.h
-    model/madaodv-helper.h
     model/madaodv-id-cache.h
     model/madaodv-neighbor.h
     model/madaodv-packet.h
@@ -20,6 +19,7 @@ set(header_files
     model/madaodv-rqueue.h
     model/madaodv-rtable.h
     model/hybrid-wifi-mac.h
+    helper/madaodv-helper.h
 )
 
 build_lib(

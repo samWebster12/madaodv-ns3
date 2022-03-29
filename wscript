@@ -12,7 +12,6 @@ def build(bld):
                                                'mobility' ])
     module.source = [
         'model/madaodv-dpd.cc',
-        'model/madaodv-helper.cc',
         'model/madaodv-id-cache.cc',
         'model/madaodv-neighbor.cc',
         'model/madaodv-packet.cc',
@@ -31,7 +30,6 @@ def build(bld):
     headers.module = 'madaodv'
     headers.source = [
         'model/madaodv-dpd.h',
-        'model/madaodv-helper.h',
         'model/madaodv-id-cache.h',
         'model/madaodv-neighbor.h',
         'model/madaodv-packet.h',
