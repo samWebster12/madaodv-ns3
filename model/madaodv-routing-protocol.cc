@@ -1751,6 +1751,7 @@ RoutingProtocol::RecvRequest (Ptr<Packet> p, Ipv6Address receiver, Ipv6Address s
 void
 RoutingProtocol::SendReply (RreqHeader const & rreqHeader, RoutingTableEntry const & toOrigin)
 {
+  NS_LOG_INFO("SEND REPLY");
   NS_LOG_FUNCTION (this << toOrigin.GetDestination ());
   //std::cout << "\n\nREPLYING\n\n";
  // Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);

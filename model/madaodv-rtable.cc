@@ -536,7 +536,7 @@ RoutingTable::ActiveApEntries(RoutingTableEntry& entry)
   for (std::map<Ipv6Address, RoutingTableEntry>::iterator i =
          m_ipv6AddressEntry.begin (); i != m_ipv6AddressEntry.end (); )
     {
-      std::cout << "here" << std::endl;
+   //   std::cout << "here" << std::endl;
       if (i->second.IsAccessPoint () && i->second.GetFlag() == VALID)
         {
           Ptr<Ipv6Route> route = i->second.GetRoute();

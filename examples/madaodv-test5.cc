@@ -127,7 +127,6 @@ int main(int argc, char **argv)
 
 
 
-
   std::cout << "Starting simulation for " << 30 << " s ...\n";
 
   Simulator::Stop (Seconds (30));
