@@ -478,10 +478,10 @@ RoutingProtocol::RouteOutput (Ptr<Packet> p, const Ipv6Header &header,
   RoutingTableEntry rt;
 
   Ptr<Node> node = m_ipv6->GetObject<Node> ();
-  std::cout << "[node " << node->GetId() << "] \tsearching for destination " << dst << " in routing table: ";
+  //std::cout << "[node " << node->GetId() << "] \tsearching for destination " << dst << " in routing table: ";
   if (m_routingTable.LookupValidRoute (dst, rt))
     {
-      std::cout << "SUCCESSFUL" << std::endl;
+   //   //std::cout << "SUCCESSFUL" << std::endl;
       route = rt.GetRoute ();
       NS_ASSERT (route != 0);
       NS_LOG_DEBUG ("Exist route to " << route->GetDestination () << " from interface " << route->GetSource ());
@@ -500,10 +500,10 @@ RoutingProtocol::RouteOutput (Ptr<Packet> p, const Ipv6Header &header,
   
   else if (OnInternet(dst) && m_routingTable.ActiveApEntries(rt))
   {
-    Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);
-      PrintRoutingTable (routingStream, Time::Unit::S);
-    std::cout << "found an access point in the routing table!" << std::endl;
-    std::cout << "route\ndst: " << route->GetDestination() << "\nsource: " << route->GetSource() << "\ngateway: " << route->GetGateway() << std::endl;
+ //   Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);
+  //    PrintRoutingTable (routingStream, Time::Unit::S);
+    //std::cout << "found an access point in the routing table!" << std::endl;
+    //std::cout << "route\ndst: " << route->GetDestination() << "\nsource: " << route->GetSource() << "\ngateway: " << route->GetGateway() << std::endl;
   //  std::cout << "route: " << entry.GetRoute() << std::endl;
     //Ptr<Ipv6Route> route = entry.GetRoute();
 
@@ -520,7 +520,7 @@ RoutingProtocol::RouteOutput (Ptr<Packet> p, const Ipv6Header &header,
     UpdateRouteLifeTime (route->GetGateway (), m_activeRouteTimeout);
     return route;
   }
-  std::cout << "FAILURE" << std::endl;
+  //std::cout << "FAILURE" << std::endl;
   // Valid route not found, in this case we return loopback.
   // Actual route request will be deferred until packet will be fully formed,
   // routed to loopback, received from loopback and passed to RouteInput (see below)
@@ -556,7 +556,7 @@ RoutingProtocol::DeferredRouteOutput (Ptr<const Packet> p, const Ipv6Header & he
   {
     newEntry.SetNeedAccessPoint(true);
     searchingFor = Ipv6Address("100::");
-    std::cout << "address " << header.GetDestinationAddress() << " is on internet, searching for 100:: in routing table" << std::endl;
+    //std::cout << "address " << header.GetDestinationAddress() << " is on internet, searching for 100:: in routing table" << std::endl;
   }
 
 
@@ -569,7 +569,7 @@ RoutingProtocol::DeferredRouteOutput (Ptr<const Packet> p, const Ipv6Header & he
       
       
       bool result = m_routingTable.LookupRoute (searchingFor, rt);
-      std::cout << "result: " << (!result || ((rt.GetFlag () != IN_SEARCH) && result)) << std::endl;
+      //std::cout << "result: " << (!result || ((rt.GetFlag () != IN_SEARCH) && result)) << std::endl;
       if (!result || ((rt.GetFlag () != IN_SEARCH) && result))
         {
           NS_LOG_LOGIC ("Send new RREQ for outbound packet to " << header.GetDestinationAddress ());
@@ -1183,7 +1183,7 @@ RoutingProtocol::SendRequest (Ipv6Address dst)
 
   if (OnInternet(dst))
   {
-    std::cout << "set access point query" << std::endl;
+    //std::cout << "set access point query" << std::endl;
     rreqHeader.SetAccessPointQuery(true);
    // rtSearchFor = Ipv6Address("100::");
   }
@@ -1321,7 +1321,7 @@ RoutingProtocol::SendTo (Ptr<Socket> socket, Ptr<Packet> packet, Ipv6Address des
   }
 
   Ptr<Node> node = m_ipv6->GetObject<Node> ();
-  std::cout << "[node " << node->GetId() << "] sending " << type << " to destination " << dst << " through " << destination << std::endl;
+  //std::cout << "[node " << node->GetId() << "] sending " << type << " to destination " << dst << " through " << destination << std::endl;
 
   socket->SendTo (packet, 0, Inet6SocketAddress (destination, MADAODV_PORT));
 
@@ -1345,7 +1345,7 @@ RoutingProtocol::ScheduleRreqRetry (Ipv6Address dst)
   if (rt.GetHop () < m_netDiameter)
     {
       retry = 2 * m_nodeTraversalTime * (rt.GetHop () + m_timeoutBuffer);
-      std::cout << "retry: " << retry << std::endl;
+      //std::cout << "retry: " << retry << std::endl;
     }
   else
     {
@@ -1496,7 +1496,7 @@ RoutingProtocol::RecvRequest (Ptr<Packet> p, Ipv6Address receiver, Ipv6Address s
 
 
   Ptr<Node> node = m_ipv6->GetObject<Node> ();
-  std::cout << "[node " << node->GetId() << "] rreq received from " << src << " for " << rreqHeader.GetDst() << std::endl;
+  //std::cout << "[node " << node->GetId() << "] rreq received from " << src << " for " << rreqHeader.GetDst() << std::endl;
 
   // A node ignores all RREQs received from any node in its blacklist
   RoutingTableEntry toPrev;
@@ -1753,8 +1753,8 @@ RoutingProtocol::SendReply (RreqHeader const & rreqHeader, RoutingTableEntry con
 {
   NS_LOG_FUNCTION (this << toOrigin.GetDestination ());
   //std::cout << "\n\nREPLYING\n\n";
-  Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);
-  PrintRoutingTable (routingStream, Time::Unit::S);
+ // Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);
+ // PrintRoutingTable (routingStream, Time::Unit::S);
   /*
    * Destination node MUST increment its own sequence number by one if the sequence number in the RREQ packet is equal to that
    * incremented value. Otherwise, the destination does not change its sequence number before generating the  RREP message.
@@ -1887,7 +1887,7 @@ RoutingProtocol::RecvReply (Ptr<Packet> p, Ipv6Address receiver, Ipv6Address sen
   RrepHeader rrepHeader;
   p->RemoveHeader (rrepHeader);
   Ptr<Node> node = m_ipv6->GetObject<Node> ();
-  std::cout << "\n[node " << node->GetId() << "] rrep received from " << sender << " for " << rrepHeader.GetOrigin() << std::endl;
+  //std::cout << "\n[node " << node->GetId() << "] rrep received from " << sender << " for " << rrepHeader.GetOrigin() << std::endl;
 
   Ipv6Address dst = rrepHeader.GetDst ();
   NS_LOG_LOGIC ("RREP destination " << dst << " RREP origin " << rrepHeader.GetOrigin ());
