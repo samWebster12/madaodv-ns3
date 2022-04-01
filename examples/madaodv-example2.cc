@@ -1,24 +1,7 @@
-/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * Copyright (c) 2009 IITP RAS
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation;
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * This is an example script for AODV manet routing protocol. 
- *
- * Authors: Pavel Boyko <boyko@iitp.ru>
- */
+  Search for node with that is connected to an access point
+
+*/
 
 #include <iostream>
 #include <cmath>
@@ -43,6 +26,7 @@
 #include "ns3/yans-wifi-helper.h"
 #include "ns3/mobility-model.h"
 
+#define INTERNET_ADDRESS "fd34:1b20:6cd5:54b1::9"
 using namespace ns3;
 
 /**
@@ -50,16 +34,14 @@ using namespace ns3;
  * \ingroup examples
  * \brief Test script.
  * 
- * This script creates 1-dimensional grid topology and then ping last node from the first one:
+ * This script creates 1-dimensional grid topology, with the first 9 nodes being having hybrid-wifi-macs, mac that can act in both infrastrurue and adhoc mode, intalled on them.
+ * The last node is an access point. The first node attempts to ping an address not within the madaodv network, so an access point query is sent (RREQ) and the final node with 
+ * a hybrid-wifi-mac installed on it responds since it is connected to the access point. The simulution ends with an error...
  * 
- * [10.0.0.1] <-- step --> [10.0.0.2] <-- step --> [10.0.0.3] <-- step --> [10.0.0.4]
+ * [100::1] <-- step --> [100::2] <-- step --> [100::3] <-- step --> [100::4] <-- step --> [100::5] <-- step --> [100::6] <-- step --> [100::7] <-- step --> [100::8] <-- step --> [100::9] <-- step --> [100::a (AP)]
  * 
- * ping 10.0.0.4
+ * ping INTERNET_ADDRESS
  *
- * When 1/3 of simulation time has elapsed, one of the nodes is moved out of
- * range, thereby breaking the topology.  By default, this will result in
- * only 34 of 100 pings being received.  If the step size is reduced
- * to cover the gap, then all pings can be received.
  */
 class MadaodvExample 
 {
@@ -122,20 +104,9 @@ private:
 int main (int argc, char **argv)
 {
   MadaodvExample test;
-  //LogComponentEnable("WifiNetDevice", LOG_LEVEL_ALL);
-  //LogComponentEnable("TrafficControlLayer", LOG_LEVEL_ALL);
   LogComponentEnable("Ping6Application", LOG_LEVEL_ALL);
   LogComponentEnable("MadaodvRoutingProtocol", LOG_LEVEL_INFO);
- // LogComponentEnable("HybridWifiMac", LOG_LEVEL_INFO);
- // LogComponentEnable("ApWifiMac", LOG_LEVEL_INFO);
-  //LogComponentEnable("Ipv6AddressHelper", LOG_LEVEL_ALL);
- // LogComponentEnable("MadaodvRoutingProtocol", LOG_LEVEL_ALL);
-//  LogComponentEnable("UdpSocketImpl", LOG_LEVEL_ALL);
-  
- // LogComponentEnable("Ipv6L3Protocol", LOG_LEVEL_ALL);
-  //LogComponentEnable("UdpL4Protocol", LOG_LEVEL_ALL);
-  //LogComponentEnable("Ipv6EndPointDemux", LOG_LEVEL_ALL);
-  
+
   if (!test.Configure (argc, argv))
     NS_FATAL_ERROR ("Configuration failed. Aborted.");
 
@@ -374,8 +345,8 @@ MadaodvExample::LetsSendDirectIpv6 ()
   UdpHeader hdr;
   packet->AddHeader (hdr);;
 
-  Ipv6Address from ("2001:db8::200:ff:fe00:1");
-  Ipv6Address to ("fd34:1b20:6cd5:54b1::9");
+  Ipv6Address from ("100::1");
+  Ipv6Address to (INTERNET_ADDRESS);
   Ipv6Route rt;
   rt.SetDestination(to);
   rt.SetSource(from);
@@ -396,7 +367,7 @@ MadaodvExample::InstallApplications ()
   //ping.SetAttribute ("Verbose", BooleanValue (true));
   std::cout << "Target Address: " << interfaces.GetAddress (size - 1, 1) << std::endl << std::endl;
  // ping.SetRemote(interfaces.GetAddress (size - 1, 1));
-  ping.SetRemote(Ipv6Address("fd34:1b20:6cd5:54b1::9")); //fd34:1b20:6cd5:54b1::9
+  ping.SetRemote(Ipv6Address(INTERNET_ADDRESS)); //fd34:1b20:6cd5:54b1::9
   ping.SetAttribute("Interval", StringValue("1s"));
   ApplicationContainer p = ping.Install (nodes.Get (0));
 

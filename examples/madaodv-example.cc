@@ -1,8 +1,8 @@
 /*
   Example of sending packet to another node in the network
-  (node 1 sends to node 9)
-  1 RREQ --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8 --> 9
-  1 <-- 2 <-- 3 <-- 4 <-- 5 <-- 6 <-- 7 <-- 8 <-- RREP 9 
+  (node 0 sends to node 8)
+  0 RREQ --> 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8
+  0 <-- 1 <-- 2 <-- 3 <-- 4 <-- 5 <-- 6 <-- 7 <-- RREP 8 
 
   Author: Samuel Webster
  */
@@ -30,15 +30,10 @@ using namespace ns3;
  * 
  * This script creates 1-dimensional grid topology and then ping last node from the first one:
  * 
- * [10.0.0.1] <-- step --> [10.0.0.2] <-- step --> [10.0.0.3] <-- step --> [10.0.0.4]
+ * [100::1] <-- step --> [100::2] <-- step --> [100::3] <-- step --> [100::4] <-- step --> [100::5] <-- step --> [100::6] <-- step --> [100::7] <-- step --> [100::8] <-- step --> [100::9]
  * 
- * ping 10.0.0.4
- *
- * When 1/3 of simulation time has elapsed, one of the nodes is moved out of
- * range, thereby breaking the topology.  By default, this will result in
- * only 34 of 100 pings being received.  If the step size is reduced
- * to cover the gap, then all pings can be received.
- */
+ * ping 100::9
+*/
 class MadaodvExample 
 {
 public:
