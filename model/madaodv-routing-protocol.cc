@@ -168,7 +168,7 @@ RoutingProtocol::RoutingProtocol ()
     m_maxQueueTime (Seconds (30)),
     m_destinationOnly (false),
     m_gratuitousReply (true),
-    m_enableHello (false),
+    m_enableHello (false), //enable
     m_routingTable (m_deletePeriod),
     m_queue (m_maxQueueLen, m_maxQueueTime),
     m_requestId (0),
@@ -1753,6 +1753,7 @@ RoutingProtocol::SendReply (RreqHeader const & rreqHeader, RoutingTableEntry con
 {
   NS_LOG_INFO("SEND REPLY");
   NS_LOG_FUNCTION (this << toOrigin.GetDestination ());
+  
   //std::cout << "\n\nREPLYING\n\n";
  // Ptr<OutputStreamWrapper> routingStream = Create<OutputStreamWrapper> (&std::cout);
  // PrintRoutingTable (routingStream, Time::Unit::S);
@@ -1787,8 +1788,8 @@ RoutingProtocol::SendReply (RreqHeader const & rreqHeader, RoutingTableEntry con
   packet->AddHeader (tHeader);
   //std::cout << "find socket with interface address " << toOrigin.GetInterface() << std::endl;
   Ptr<Socket> socket = FindSocketWithInterfaceAddress (toOrigin.GetInterface ());
-  NS_ASSERT (socket);
 
+  NS_ASSERT (socket); //ERROR
 
   Ptr<Node> node = m_ipv6->GetObject<Node> ();
   //std::cout << "[node " << node->GetId() << "] sending RREP back to origin " << rrepHeader.GetOrigin () << " from destination " << rrepHeader.GetDst () << " through " << toOrigin.GetNextHop() <<  std::endl;
@@ -2614,9 +2615,9 @@ RoutingProtocol::FindSocketWithInterfaceAddress (Ipv6InterfaceAddress addr ) con
     {
       Ptr<Socket> socket = j->first;
       Ipv6InterfaceAddress iface = j->second;
-      //std::cout << "iface addr: " << iface.GetAddress() << "\t\tprefix: " << iface.GetPrefix() << "\t\tstate: " << iface.GetState() << "\t\tScope: " << iface.GetScope() << std::endl;
-      //std::cout << "addr addr: " << addr.GetAddress() << "\t\tprefix: " << addr.GetPrefix() << "\t\tstate: " << addr.GetState() << "\t\tScope: " << addr.GetScope() << std::endl;
-      //std::cout << "equal: " << (iface == addr) << std::endl;
+    //  std::cout << "iface addr: " << iface.GetAddress() << "\t\tprefix: " << iface.GetPrefix() << "\t\tstate: " << iface.GetState() << "\t\tScope: " << iface.GetScope() << std::endl;
+   //   std::cout << "addr addr: " << addr.GetAddress() << "\t\tprefix: " << addr.GetPrefix() << "\t\tstate: " << addr.GetState() << "\t\tScope: " << addr.GetScope() << std::endl;
+   //   std::cout << "equal: " << (iface == addr) << std::endl;
       if (iface == addr)
         {
           return socket;
