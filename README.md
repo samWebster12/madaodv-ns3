@@ -20,14 +20,32 @@ Next, **cd into the downloaded directory** and run the command: <br />
 `git clone https://github.com/samWebster12/madaodv-ns3 ns-3.34/src/madaodv`
 
 Next, changes will need to be made to some files. To see a full list of changes, visit the **Supplemental Files** section <br />
-Run the commands: </br>
+Run the commands: </br> </br>
 `rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-end-point-demux.cc ns-3.34/src/internet/ipv6-end-point-demux.cc` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-interface ns-3.34/src/internet/ipv6-interface` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc` <br /> <br />
 
+## Supplemental Files
+These files have modifications from the original files that allow madaodv to work properly. <br/>
+The changes are listed below:
 
+### icmpv6-l4-protocol.cc
+- Got rid of Icmpv6L4Protocol Handle RS method lines 452 to 458 (everything but first line)
+
+### ipv6-end-point-demux.cc
+- added case for all nodes multicast in Ipv6EndPointDemux Lookup method line 232
+- added  line: bool localAddressMatchesWildcard = endP->GetLocalAddress () == Ipv6Address::GetAny();
+- changed if to : if (!(localAddressMatchesExact || localAddressMatchesWildCard || destAddressIsAllNodesMulticast))
+- changed first of bottom ifs to : if ((localAddressMatchesWildCard || destAddressIsAllnodesMulticast) && ...)
+
+
+### ipv6-interface.cc
+- Commented out "Simulator::Schedule (Seconds (0.), &Icmpv6L4Protocol::FunctionDadTimeout, icmpv6, this, addr);" in Ipv6Interface::AddAddress (in else statement)
+
+### ipv6-l3-protocol.cc
+- added a new case to ipv6-l3-protocol, Send function (case of allnode multicast):
 
 ## Hybrid Wifi Mac
 Development of a Hybrid Wifi Mac that provides support for both infrastrucutre mode and adhoc is being workd on in the hybrid-wifi-mac folder. The goal is to allow nodes to connect to wifi infrasture mode and also connect to madaodv network, providing access to the internet to the madaodv network through this wifi infrastructure. 
