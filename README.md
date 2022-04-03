@@ -12,10 +12,12 @@ Since nodes that are part of the madaodv netowrk are not assumed to have a legit
 
 ## How To Install and Run
 To run simulations, you will need to install ns3 version 3.34 <br />
-To do so, follow this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
+To do so, click this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
 
-Next, run the command
-`this a test`
+
+Next, **assuming the parent folder is named ns3**, run the command: <br />
+
+`git clone https://github.com/samWebster12/madaodv-ns3 ns3/src/madaodv`
 
 ## Hybrid Wifi Mac
 Development of a Hybrid Wifi Mac that provides support for both infrastrucutre mode and adhoc is being workd on in the hybrid-wifi-mac folder. The goal is to allow nodes to connect to wifi infrasture mode and also connect to madaodv network, providing access to the internet to the madaodv network through this wifi infrastructure. 
