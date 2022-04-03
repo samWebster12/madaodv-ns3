@@ -29,9 +29,12 @@ Run the commands: </br> </br>
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc`
 
 ### Compiliation
-To compile, configure tests and then build ns3:
-`./waf configure --enable-tests --enable-examples` <br/>
-`./waf build`
+To compile, configure tests and then build ns3: <br />
+```
+./waf configure --enable-tests --enable-examples <br/>
+./waf build`
+```
+
 ## Supplemental Files
 These files have modifications from the original files that allow madaodv to work properly. <br/>
 The changes are listed below:
