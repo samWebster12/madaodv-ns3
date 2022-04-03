@@ -21,7 +21,11 @@ Next, **cd into the downloaded directory** and run the command: <br />
 
 Next, changes will need to be made to some files. To see a full list of changes, visit the **Supplemental Files** section <br />
 Run the commands: </br>
-`rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc\somehting`
+`rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc` <br />
+`cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc` <br />
+`cp ns-3.34/src/madaodv/supplemental_files/ipv6-end-point-demux.cc ns-3.34/src/internet/ipv6-end-point-demux.cc` <br />
+`cp ns-3.34/src/madaodv/supplemental_files/ipv6-interface ns-3.34/src/internet/ipv6-interface` <br />
+`cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc` <br />
 
 
 
