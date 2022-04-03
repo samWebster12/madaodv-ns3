@@ -18,10 +18,10 @@ To do so, click this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.
 
 Next, **cd into the downloaded directory** and run the command: <br />
 
-`git clone https://github.com/samWebster12/madaodv-ns3 ns-3.34/src/madaodv`
+```git clone https://github.com/samWebster12/madaodv-ns3 ns-3.34/src/madaodv```
 
 Next, changes will need to be made to some files. To see a full list of changes, visit the **Supplemental Files** section <br />
-Run the commands: </br> </br>
+Run the commands: </br>
 ```
 rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc 
 cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc
