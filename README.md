@@ -22,17 +22,19 @@ Next, **cd into the downloaded directory** and run the command: <br />
 
 Next, changes will need to be made to some files. To see a full list of changes, visit the **Supplemental Files** section <br />
 Run the commands: </br> </br>
-`rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc` <br /> <br />
-`cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc` <br /> <br />
-`cp ns-3.34/src/madaodv/supplemental_files/ipv6-end-point-demux.cc ns-3.34/src/internet/ipv6-end-point-demux.cc` <br /> <br />
-`cp ns-3.34/src/madaodv/supplemental_files/ipv6-interface ns-3.34/src/internet/ipv6-interface` <br /> <br />
-`cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc`
+```
+rm ns-3.34/src/internet/icmpv6-l4-protocol.cc ns-3.34/src/internet/ipv6-end-point-demux.cc ipv6-interface.cc ipv6-l3-protocol.cc 
+cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc
+cp ns-3.34/src/madaodv/supplemental_files/ipv6-end-point-demux.cc ns-3.34/src/internet/ipv6-end-point-demux.cc
+cp ns-3.34/src/madaodv/supplemental_files/ipv6-interface ns-3.34/src/internet/ipv6-interface
+cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc
+```
 
 ### Compiliation
 To compile, configure tests and then build ns3: <br />
 ```
 ./waf configure --enable-tests --enable-examples <br/>
-./waf build`
+./waf build
 ```
 
 ## Supplemental Files
