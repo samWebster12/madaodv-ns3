@@ -11,6 +11,7 @@ Since nodes that are part of the madaodv netowrk are not assumed to have a legit
 
 
 ## How To Install and Run
+### Prerequisites
 To run simulations, you will need to install ns3 version 3.34 <br />
 To do so, click this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
 
@@ -25,8 +26,12 @@ Run the commands: </br> </br>
 `cp ns-3.34/src/madaodv/supplemental_files/icmpv6-l4-protocol.cc ns-3.34/src/internet/icmpv6-l4-protocol.cc` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-end-point-demux.cc ns-3.34/src/internet/ipv6-end-point-demux.cc` <br /> <br />
 `cp ns-3.34/src/madaodv/supplemental_files/ipv6-interface ns-3.34/src/internet/ipv6-interface` <br /> <br />
-`cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc` <br /> <br />
+`cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/internet/ipv6-l3-protocol.cc`
 
+### Compiliation
+To compile, configure tests and then build ns3:
+`./waf configure --enable-tests --enable-examples` <br/>
+`./waf build`
 ## Supplemental Files
 These files have modifications from the original files that allow madaodv to work properly. <br/>
 The changes are listed below:
