@@ -11,8 +11,8 @@ Since nodes that are part of the madaodv netowrk are not assumed to have a legit
 
 
 ## How To Install and Run
-To run simulations, you will need to install ns3 version 3.34
-[Click this link to download ns3 3.34](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
+To run simulations, you will need to install ns3 version 3.34 <br />
+To do so, follow this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
 
 Next, run the command
 `this a test`
