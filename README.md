@@ -16,7 +16,7 @@ To run simulations, you will need to install ns3 version 3.34 <br />
 To do so, click this [link](https://www.nsnam.org/releases/ns-allinone-3.34.tar.bz2)
 
 
-Next, **cd into the downloaded directory** and run the command: <br />
+Next, **move into the downloaded directory** and run the command: <br />
 
 ```git clone https://github.com/samWebster12/madaodv-ns3 ns-3.34/src/madaodv```
 
@@ -31,9 +31,9 @@ cp ns-3.34/src/madaodv/supplemental_files/ipv6-l3-protocol.cc ns-3.34/src/intern
 ```
 
 ### Compiliation
-To compile, configure tests and then build ns3: <br />
-```
-./waf configure --enable-tests --enable-examples <br/>
+To compile, **move into the ns-3 (ns-3.34) directory**, configure tests, and then build ns3: <br />
+``` 
+./waf configure --enable-tests --enable-examples
 ./waf build
 ```
 
