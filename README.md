@@ -64,6 +64,7 @@ The changes are listed below:
 ### ipv6-l3-protocol.cc
 - added a new case to ipv6-l3-protocol, Send function (case of allnode multicast):
 
+<br/>
 ## Hybrid Wifi Mac
 Development of a Hybrid Wifi Mac that provides support for both infrastrucutre mode and adhoc is being workd on in the hybrid-wifi-mac folder. The goal is to allow nodes to connect to wifi infrasture mode and also connect to madaodv network, providing access to the internet to the madaodv network through this wifi infrastructure. 
 
