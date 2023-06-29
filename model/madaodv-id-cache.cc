@@ -1,4 +1,3 @@
-/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
  * Copyright (c) 2009 IITP RAS
  *
@@ -16,52 +15,51 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * Based on
- *      NS-2 AODV model developed by the CMU/MONARCH group and optimized and
+ *      NS-2 MADAODV model developed by the CMU/MONARCH group and optimized and
  *      tuned by Samir Das and Mahesh Marina, University of Cincinnati;
  *
- *      AODV-UU implementation by Erik Nordström of Uppsala University
- *      http://core.it.uu.se/core/index.php/AODV-UU
+ *      MADAODV-UU implementation by Erik Nordström of Uppsala University
+ *      https://web.archive.org/web/20100527072022/http://core.it.uu.se/core/index.php/AODV-UU
  *
  * Authors: Elena Buchatskaia <borovkovaes@iitp.ru>
  *          Pavel Boyko <boyko@iitp.ru>
  */
 #include "madaodv-id-cache.h"
+
 #include <algorithm>
 
-namespace ns3 {
-namespace madaodv {
-bool
-IdCache::IsDuplicate (Ipv6Address addr, uint32_t id)
+namespace ns3
 {
-  Purge ();
-  for (std::vector<UniqueId>::const_iterator i = m_idCache.begin ();
-       i != m_idCache.end (); ++i)
+namespace madaodv
+{
+bool
+IdCache::IsDuplicate(Ipv4Address addr, uint32_t id)
+{
+    Purge();
+    for (std::vector<UniqueId>::const_iterator i = m_idCache.begin(); i != m_idCache.end(); ++i)
     {
-      if (i->m_context == addr && i->m_id == id)
+        if (i->m_context == addr && i->m_id == id)
         {
-          return true;
+            return true;
         }
     }
-  struct UniqueId uniqueId =
-  {
-    addr, id, m_lifetime + Simulator::Now ()
-  };
-  m_idCache.push_back (uniqueId);
-  return false;
+    UniqueId uniqueId = {addr, id, m_lifetime + Simulator::Now()};
+    m_idCache.push_back(uniqueId);
+    return false;
 }
+
 void
-IdCache::Purge ()
+IdCache::Purge()
 {
-  m_idCache.erase (remove_if (m_idCache.begin (), m_idCache.end (),
-                              IsExpired ()), m_idCache.end ());
+    m_idCache.erase(remove_if(m_idCache.begin(), m_idCache.end(), IsExpired()), m_idCache.end());
 }
 
 uint32_t
-IdCache::GetSize ()
+IdCache::GetSize()
 {
-  Purge ();
-  return m_idCache.size ();
+    Purge();
+    return m_idCache.size();
 }
 
-}
-}
+} // namespace madaodv
+} // namespace ns3

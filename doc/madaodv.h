@@ -14,35 +14,25 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+ * Based on
+ *      NS-2 AODV model developed by the CMU/MONARCH group and optimized and
+ *      tuned by Samir Das and Mahesh Marina, University of Cincinnati;
+ *
+ *      AODV-UU implementation by Erik Nordström of Uppsala University
+ *      https://web.archive.org/web/20100527072022/http://core.it.uu.se/core/index.php/AODV-UU
  *
  * Authors: Elena Buchatskaia <borovkovaes@iitp.ru>
  *          Pavel Boyko <boyko@iitp.ru>
  */
 
-#include "madaodv-dpd.h"
+#ifndef MADAODV_H
+#define MADAODV_H
 
-namespace ns3
-{
-namespace madaodv
-{
+/**
+ * \defgroup madaodv MADAODV Routing
+ *
+ * This section documents the API of the ns-3 MADAODV module. For a generic functional description,
+ * please refer to the ns-3 manual.
+ */
 
-bool
-DuplicatePacketDetection::IsDuplicate(Ptr<const Packet> p, const Ipv4Header& header)
-{
-    return m_idCache.IsDuplicate(header.GetSource(), p->GetUid());
-}
-
-void
-DuplicatePacketDetection::SetLifetime(Time lifetime)
-{
-    m_idCache.SetLifetime(lifetime);
-}
-
-Time
-DuplicatePacketDetection::GetLifetime() const
-{
-    return m_idCache.GetLifeTime();
-}
-
-} // namespace madaodv
-} // namespace ns3
+#endif /* MADAODV_H */

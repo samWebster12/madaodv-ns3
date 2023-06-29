@@ -1,4 +1,7 @@
-set(source_files
+build_lib(
+  LIBNAME madaodv
+  SOURCE_FILES
+    helper/madaodv-helper.cc
     model/madaodv-dpd.cc
     model/madaodv-id-cache.cc
     model/madaodv-neighbor.cc
@@ -6,11 +9,8 @@ set(source_files
     model/madaodv-routing-protocol.cc
     model/madaodv-rqueue.cc
     model/madaodv-rtable.cc
-    model/hybrid-wifi-mac.cc
-    helper/madaodv-helper.cc
-)
-
-set(header_files
+  HEADER_FILES
+    helper/madaodv-helper.h
     model/madaodv-dpd.h
     model/madaodv-id-cache.h
     model/madaodv-neighbor.h
@@ -18,20 +18,12 @@ set(header_files
     model/madaodv-routing-protocol.h
     model/madaodv-rqueue.h
     model/madaodv-rtable.h
-    model/hybrid-wifi-mac.h
-    helper/madaodv-helper.h
-)
-
-build_lib(
-  LIBNAME madaodv
-  SOURCE_FILES ${source_files}
-  HEADER_FILES ${header_files}
-  LIBRARIES_TO_LINK
-    ${libwifi}
-    ${libnetwork}
-    ${libinternet}
-    ${libmobility}
+  LIBRARIES_TO_LINK ${libinternet}
+                    ${libwifi}
   TEST_SOURCES
-    
+    test/madaodv-id-cache-test-suite.cc
+    test/madaodv-regression.cc
+    test/madaodv-test-suite.cc
+    test/loopback.cc
+    test/bug-772.cc
 )
-
